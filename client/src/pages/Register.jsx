@@ -57,6 +57,18 @@ function Register() {
         password,
       });
 
+      const existingProfile = JSON.parse(
+        localStorage.getItem("feedwise-profile") || "{}"
+      );
+      const nextProfile = {
+        ...existingProfile,
+        name: name || existingProfile.name || "",
+        email: email || existingProfile.email || "",
+        joinedAt: existingProfile.joinedAt || new Date().toISOString(),
+      };
+      localStorage.setItem("feedwise-profile", JSON.stringify(nextProfile));
+      localStorage.setItem("last-login-email", nextProfile.email);
+
       alert("Registration successful");
       navigate("/login");
     } catch (err) {

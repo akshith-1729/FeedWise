@@ -5,6 +5,11 @@ function Home() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
 
+  const startGuestMode = () => {
+    localStorage.removeItem("token");
+    navigate("/dashboard");
+  };
+
   const SunIcon = ({ className }) => (
     <svg
       viewBox="0 0 24 24"
@@ -189,7 +194,7 @@ function Home() {
               </div>
               <button
                 type="button"
-                onClick={() => navigate("/dashboard")}
+                onClick={startGuestMode}
                 className="mt-5 h-11 w-full rounded-full bg-qb-green text-sm font-semibold text-white shadow-sm transition hover:brightness-95 active:translate-y-px"
               >
                 Try it now

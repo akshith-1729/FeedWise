@@ -38,6 +38,22 @@ function Dashboard() {
     </svg>
   );
 
+  const UserIcon = ({ className }) => (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M20 21a8 8 0 0 0-16 0" />
+      <circle cx="12" cy="8" r="4" />
+    </svg>
+  );
+
   const SunIcon = ({ className }) => (
     <svg
       viewBox="0 0 24 24"
@@ -274,6 +290,17 @@ function Dashboard() {
             >
               <HomeIcon className="h-5 w-5" />
             </button>
+            {token ? (
+              <button
+                type="button"
+                onClick={() => navigate("/profile")}
+                className="grid h-10 w-10 place-items-center rounded-xl text-qb-muted transition hover:bg-slate-50 dark:text-qb-darkMuted dark:hover:bg-white/5"
+                aria-label="Profile"
+                title="Profile"
+              >
+                <UserIcon className="h-5 w-5" />
+              </button>
+            ) : null}
 
             <button
               type="button"
@@ -350,6 +377,17 @@ function Dashboard() {
               >
                 <HomeIcon className="h-5 w-5" />
               </button>
+              {token ? (
+                <button
+                  type="button"
+                  onClick={() => navigate("/profile")}
+                  className="mt-0.5 inline-flex h-10 w-10 items-center justify-center rounded-xl border border-qb-line bg-qb-surface text-qb-muted shadow-sm transition hover:bg-slate-50 dark:border-qb-darkLine dark:bg-qb-darkSurface dark:text-qb-darkMuted dark:hover:bg-white/5"
+                  aria-label="Profile"
+                  title="Profile"
+                >
+                  <UserIcon className="h-5 w-5" />
+                </button>
+              ) : null}
 
               <div>
                 <div className="text-sm font-semibold text-qb-muted dark:text-qb-darkMuted">

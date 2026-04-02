@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  bio: {
+    type: String,
+    default: ""
+  },
   createdAt: {
     type: Date,
     default: Date.now

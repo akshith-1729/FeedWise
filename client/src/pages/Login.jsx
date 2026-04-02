@@ -55,6 +55,17 @@ function Login() {
       });
 
       localStorage.setItem("token", res.data.token);
+      const existingProfile = JSON.parse(
+        localStorage.getItem("feedwise-profile") || "{}"
+      );
+      const nextProfile = {
+        ...existingProfile,
+        name: res.data?.name || existingProfile.name || "",
+        email: res.data?.email || email || existingProfile.email || "",
+        joinedAt: existingProfile.joinedAt || new Date().toISOString(),
+      };
+      localStorage.setItem("feedwise-profile", JSON.stringify(nextProfile));
+      localStorage.setItem("last-login-email", nextProfile.email);
       navigate("/dashboard");
     } catch (err) {
       alert("Invalid credentials");
